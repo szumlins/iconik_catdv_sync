@@ -1,0 +1,11 @@
+[iconik]
+app-id = 
+iconik-url = https://app.iconik.io/
+auth-token = 
+view-id = 
+catdv-id-field = 
+use-isg = False
+
+[catdv]
+iconik-id-field = U2
+iconik-url-field = U3

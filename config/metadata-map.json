@@ -1,0 +1,7 @@
+{
+    "field_map" : [
+        {"iconik_field_id":"Department","catdv_field_id":"USER5"},
+        {"iconik_field_id":"Keywords","catdv_field_id":"USER6"},
+        {"iconik_field_id":"description","catdv_field_id":"NOTES"}
+    ]
+}
