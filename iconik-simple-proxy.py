@@ -1,13 +1,12 @@
-import ConfigParser
+import configparser as ConfigParser
 import requests
 import json
 import os
 import argparse
-import ntpath
-import mediainfo
 import logging
 import logging.handlers
 import hashlib
+import shutil
 
 #provide an interface to run from the cli without a config file
 parser = argparse.ArgumentParser(description='Create a new iconik proxy item from a path')
@@ -20,6 +19,22 @@ parser.add_argument('-u','--iconik-id-field',dest='iconik_id_field',type=str,hel
 parser.add_argument('-v','--iconik-url-field',dest='iconik_url_field',type=str,help="Field ID in CatDV where iconik asset link will reside")
 parser.add_argument('--debug',dest='debug',default=False,action='store_true',help="Don't write files, just output metadata to console")
 cli_args = parser.parse_args()
+
+#check if log file exists
+if not os.path.exists(os.path.join(os.path.dirname(os.path.realpath(__file__)),'logs')):
+    os.makedirs(os.path.join(os.path.dirname(os.path.realpath(__file__)),'logs'))
+try:
+    with open(os.path.join(os.path.dirname(os.path.realpath(__file__)),'logs','proxy.log'),'x'):
+        print("Creating new log file")
+except FileExistsError:
+    print("Found existing log file")
+
+import mediainfo
+
+#check if mediainfo is installed
+if shutil.which('mediainfo') is None:
+    print("You need to have mediainfo installed and available in your path for this script to work, exiting")
+    exit(1)
 
 #set up our log
 logger = logging.getLogger()
@@ -302,5 +317,5 @@ if 'errors' in r.json():
 
 #try our job
 my_id = create_proxy(proxy_file)
-print "@" + iconik_id_field + "=" + my_id
-print "@" + iconik_url_field + "=<a href=\"https://app.iconik.io/asset/" + my_id + "/\" target=\"_new\">iconik link</a>"
+print ("@" + iconik_id_field + "=" + my_id)
+print ("@" + iconik_url_field + "=<a href=\"https://app.iconik.io/asset/" + my_id + "/\" target=\"_new\">iconik link</a>")

@@ -1,5 +1,5 @@
 import requests
-import ConfigParser
+import configparser as ConfigParser
 import argparse
 import os
 #provide an interface to run from the cli without a config file

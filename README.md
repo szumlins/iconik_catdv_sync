@@ -6,9 +6,10 @@ This package contains 3 scripts coupled with Worker Node actions that will allow
 
     - Mac or Linux OS only (sorry, no Windows)
     - >=CatDV Worker Node 8.0
-    - >=Python 2.7
+    - >=Python 3
     - pip
     - virtualenv
+    - MediaInfo binary installed
     
 
 ## Installing
@@ -17,9 +18,10 @@ Make sure you have virtualenv installed on your system.  First ensure you have p
 ```
 pip install virtualenv
 ```
-Next, untar/unzip this package to the location you wish to install and run create a virtualenv and install the requirements 
+Next, clone this package to the location you wish to install and run create a virtualenv and install the requirements 
 ```
 cd /path/to/my/catdv-iconik-sync/
+git clone https://github.com/szumlins/iconik_catdv_sync
 virtualenv .
 source bin/activate .
 pip install -r requirements.txt

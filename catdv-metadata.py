@@ -1,4 +1,4 @@
-import ConfigParser
+import configparser as ConfigParser
 import json
 import xml.etree.ElementTree as ET
 import argparse
@@ -6,7 +6,6 @@ import requests
 import os
 import logging
 import logging.handlers
-import ConfigParser
 
 #set up cli options
 parser = argparse.ArgumentParser(description='Parses CatDV xml and patches iconik metadata')
